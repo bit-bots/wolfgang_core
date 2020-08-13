@@ -1,6 +1,6 @@
 #include <Dynamixel2Arduino.h>
 #include <FastLED.h>
-
+#include <EEPROM.h>
 
 /*---------------------- LEDS ---------------------*/
 #define LED_PIN 0
@@ -43,23 +43,22 @@ DYNAMIXEL::Slave dxl(dxl_port, DXL_MODEL_NUM);
 #define ADDR_CONTROL_ITEM_LED2_B 20
 
 
-#define ADDR_CONTROL_ITEM_LED = 22;
-#define ADDR_CONTROL_ITEM_POWER = 23;
+#define ADDR_CONTROL_ITEM_LED 22
+#define ADDR_CONTROL_ITEM_POWER 23
 
-#define ADDR_CONTROL_ITEM_VBAT = 26;
-#define ADDR_CONTROL_ITEM_VEXT = 28;
-#define ADDR_CONTROL_ITEM_VCC = 30;
-#define ADDR_CONTROL_ITEM_VDXL = 32;
-#define ADDR_CONTROL_ITEM_CURRENT = 34;
-#define ADDR_CONTROL_ITEM_POWERON = 36;
+#define ADDR_CONTROL_ITEM_VBAT 26
+#define ADDR_CONTROL_ITEM_VEXT 28
+#define ADDR_CONTROL_ITEM_VCC 30
+#define ADDR_CONTROL_ITEM_VDXL 32
+#define ADDR_CONTROL_ITEM_CURRENT 34
+#define ADDR_CONTROL_ITEM_POWERON 36
 
 uint8_t control_item_led, control_item_power;
 uint32_t control_item_led_rgb1, control_item_led_rgb2, control_item_led_rgb3;
 
 uint16_t control_item_vbat, control_item_vext, control_item_vcc, control_item_vdxl, control_item_current, control_item_poweron;
 
-uint8_t baud;
-Preferences prefs;
+uint8_t baud, id;
 
 uint32_t dxl_to_real_baud(uint8_t baud)
 {
@@ -79,6 +78,8 @@ uint32_t dxl_to_real_baud(uint8_t baud)
 }
 
 void setup() {
+  EEPROM.write(0, 42);
+  EEPROM.write(1, 6);
   FastLED.addLeds<1, WS2812B, LED_PIN, GRB>(leds, NUM_LEDS);
   leds[0] = CRGB::Red;
   leds[1] = CRGB::Blue;
@@ -90,15 +91,9 @@ void setup() {
   leds[2] = CRGB::Black;
   FastLED.show();
 
-  prefs.begin("dxl");
-  if(!prefs.getUChar("init")) // check if prefs are initialized
-  {
-    prefs.putUChar("id", DEFAULT_ID);
-    prefs.putUChar("baud", DEFAULT_BAUD);
-    prefs.putUChar("init",1); // set initialized
-  }
-  id = prefs.getUChar("id");
-  baud = prefs.getUChar("baud");
+  
+  id = EEPROM.read(0);
+  baud = EEPROM.read(1);
   dxl_port.begin(dxl_to_real_baud(baud));
 
   dxl.setPortProtocolVersion(DXL_PROTOCOL_VER_2_0);
@@ -168,11 +163,11 @@ void loop() {
   }
   sample = (sample + 1)%100;*/
   
-  dxl.processPacket()
+  dxl.processPacket();
   if(dxl.getID() != id) // since we cant add the id as a control item, we need to check if it has been updated manually
   {
     id = dxl.getID();
-    prefs.putUChar("id", id);
+    EEPROM.write(0, id);
   }
 }
 
@@ -182,8 +177,9 @@ void write_callback_func(uint16_t item_addr, uint8_t &dxl_err_code, void* arg)
 
   if (item_addr == ADDR_CONTROL_ITEM_BAUD)
   {
-    prefs.putUChar("baud", baud);
-    ESP.restart(); // restart whole chip since restarting serial port crashes esp
+    dxl_port.end();
+    dxl_port.begin(dxl_to_real_baud(baud));
+    EEPROM.write(1, baud);
   }else if(item_addr == ADDR_CONTROL_ITEM_LED){
     digitalWrite(LED_BUILTIN, control_item_led);
     //DEBUG_SERIAL.println("LED");
