@@ -129,7 +129,7 @@ void setup() {
   pinMode(SWITCH_POWER, OUTPUT);
   pinMode(LED_DATA, OUTPUT);
 
-  digitalWrite(SWITCH_POWER, LOW);
+  digitalWrite(SWITCH_POWER, HIGH);
   
   pinMode(SWITCH_POWER_SENSE, INPUT);
   pinMode(VCC_SENSE, INPUT_PULLDOWN);
