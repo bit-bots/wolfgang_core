@@ -11,12 +11,20 @@ CRGB leds[NUM_LEDS];
 #define SWITCH_POWER 4
 #define LED_DATA 0
 
-#define SWITCH_POWER_SENSE 15
-#define VCC_SENSE 16
-#define VBAT_SENSE 17
-#define VEXT_SENSE 18
-#define VDXL_SENSE 19
-#define CURRENT_SENSE 20
+
+
+#define VDXL_SENSE 23
+#define VEXT_SENSE 22
+#define VCC_SENSE 21
+#define VBAT_SENSE_0 20
+#define VBAT_SENSE_1 19
+#define VBAT_SENSE_2 18
+#define VBAT_SENSE_3 17
+#define VBAT_SENSE_4 16
+#define VBAT_SENSE_5 15
+#define CURRENT_SENSE 14
+
+#define SWITCH_POWER_SENSE 12
 
 #define DXL_SERIAL   Serial2
 #define DEBUG_SERIAL Serial
@@ -46,20 +54,25 @@ DYNAMIXEL::Slave dxl(dxl_port, DXL_MODEL_NUM);
 #define ADDR_CONTROL_ITEM_LED 22
 #define ADDR_CONTROL_ITEM_POWER 23
 
-#define ADDR_CONTROL_ITEM_VBAT 26
 #define ADDR_CONTROL_ITEM_VEXT 28
 #define ADDR_CONTROL_ITEM_VCC 30
 #define ADDR_CONTROL_ITEM_VDXL 32
 #define ADDR_CONTROL_ITEM_CURRENT 34
 #define ADDR_CONTROL_ITEM_POWERON 36
+#define ADDR_CONTROL_ITEM_VBAT_0 38
+#define ADDR_CONTROL_ITEM_VBAT_1 40
+#define ADDR_CONTROL_ITEM_VBAT_2 42
+#define ADDR_CONTROL_ITEM_VBAT_3 44
+#define ADDR_CONTROL_ITEM_VBAT_4 46
+#define ADDR_CONTROL_ITEM_VBAT_5 48
 
 uint8_t control_item_led, control_item_power;
 uint32_t control_item_led_rgb1, control_item_led_rgb2, control_item_led_rgb3;
 
-uint16_t control_item_vbat, control_item_vext, control_item_vcc, control_item_vdxl, control_item_current, control_item_poweron;
+uint16_t control_item_vbat[6], control_item_vext, control_item_vcc, control_item_vdxl, control_item_current, control_item_poweron;
 
 uint8_t baud, id;
-
+int sample = 0;
 uint32_t dxl_to_real_baud(uint8_t baud)
 {
   int real_baud = 57600;
@@ -78,8 +91,14 @@ uint32_t dxl_to_real_baud(uint8_t baud)
 }
 
 void setup() {
-  EEPROM.write(0, 42);
-  EEPROM.write(1, 6);
+  //check initialzed
+  if(EEPROM.read(2) == 'i') {
+    EEPROM.write(0, 42);
+    EEPROM.write(1, 6);
+    EEPROM.write(2, 'i');
+  }
+  
+  //blink to show on
   FastLED.addLeds<1, WS2812B, LED_PIN, GRB>(leds, NUM_LEDS);
   leds[0] = CRGB::Red;
   leds[1] = CRGB::Blue;
@@ -91,11 +110,10 @@ void setup() {
   leds[2] = CRGB::Black;
   FastLED.show();
 
-  
+  // initialize dxl
   id = EEPROM.read(0);
   baud = EEPROM.read(1);
   dxl_port.begin(dxl_to_real_baud(baud));
-
   dxl.setPortProtocolVersion(DXL_PROTOCOL_VER_2_0);
   dxl.setFirmwareVersion(1);
   dxl.setID(id);
@@ -115,7 +133,12 @@ void setup() {
   dxl.addControlItem(ADDR_CONTROL_ITEM_LED2_G, leds[2].g);
   dxl.addControlItem(ADDR_CONTROL_ITEM_LED2_B, leds[2].b);
   
-  dxl.addControlItem(ADDR_CONTROL_ITEM_VBAT, control_item_vbat);
+  dxl.addControlItem(ADDR_CONTROL_ITEM_VBAT_0, control_item_vbat[0]);
+  dxl.addControlItem(ADDR_CONTROL_ITEM_VBAT_1, control_item_vbat[1]);
+  dxl.addControlItem(ADDR_CONTROL_ITEM_VBAT_2, control_item_vbat[2]);
+  dxl.addControlItem(ADDR_CONTROL_ITEM_VBAT_3, control_item_vbat[3]);
+  dxl.addControlItem(ADDR_CONTROL_ITEM_VBAT_4, control_item_vbat[4]);
+  dxl.addControlItem(ADDR_CONTROL_ITEM_VBAT_5, control_item_vbat[5]);
   dxl.addControlItem(ADDR_CONTROL_ITEM_VEXT, control_item_vext);
   dxl.addControlItem(ADDR_CONTROL_ITEM_VCC, control_item_vcc);
   dxl.addControlItem(ADDR_CONTROL_ITEM_VDXL, control_item_vdxl);
@@ -132,17 +155,29 @@ void setup() {
   digitalWrite(SWITCH_POWER, LOW);
   
   pinMode(SWITCH_POWER_SENSE, INPUT);
-  pinMode(VCC_SENSE, INPUT_PULLDOWN);
-  pinMode(VBAT_SENSE, INPUT_PULLDOWN);
-  pinMode(VEXT_SENSE, INPUT_PULLDOWN);
-  pinMode(VDXL_SENSE, INPUT_PULLDOWN);
+  pinMode(VCC_SENSE, INPUT);
+  pinMode(VBAT_SENSE_0, INPUT);
+  pinMode(VBAT_SENSE_1, INPUT);
+  pinMode(VBAT_SENSE_2, INPUT);
+  pinMode(VBAT_SENSE_3, INPUT);
+  pinMode(VBAT_SENSE_4, INPUT);
+  pinMode(VBAT_SENSE_5, INPUT);
+  pinMode(VEXT_SENSE, INPUT);
+  pinMode(VDXL_SENSE, INPUT);
   pinMode(CURRENT_SENSE, INPUT);
 }
 
 void loop() {
-  control_item_poweron = analogRead(SWITCH_POWER_SENSE);
+  control_item_poweron = digitalRead(SWITCH_POWER_SENSE);
+  
+  
   control_item_vcc = analogRead(VCC_SENSE);
-  control_item_vbat = analogRead(VBAT_SENSE);
+  control_item_vbat[0] = analogRead(VBAT_SENSE_0);
+  control_item_vbat[1] = analogRead(VBAT_SENSE_1);
+  control_item_vbat[2] = analogRead(VBAT_SENSE_2);
+  control_item_vbat[3] = analogRead(VBAT_SENSE_3);
+  control_item_vbat[4] = analogRead(VBAT_SENSE_4);
+  control_item_vbat[5] = analogRead(VBAT_SENSE_5);
   control_item_vext = analogRead(VEXT_SENSE);
   control_item_vdxl = analogRead(VDXL_SENSE);
   control_item_current = analogRead(CURRENT_SENSE);
@@ -161,7 +196,8 @@ void loop() {
     DEBUG_SERIAL.print(control_item_current);
     DEBUG_SERIAL.print("\n");
   }
-  sample = (sample + 1)%100;*/
+  sample = (sample + 1)%100;
+  */
   
   dxl.processPacket();
   if(dxl.getID() != id) // since we cant add the id as a control item, we need to check if it has been updated manually
@@ -182,12 +218,9 @@ void write_callback_func(uint16_t item_addr, uint8_t &dxl_err_code, void* arg)
     EEPROM.write(1, baud);
   }else if(item_addr == ADDR_CONTROL_ITEM_LED){
     digitalWrite(LED_BUILTIN, control_item_led);
-    //DEBUG_SERIAL.println("LED");
   }
   else if (item_addr == ADDR_CONTROL_ITEM_POWER){
     digitalWrite(SWITCH_POWER, control_item_power);
-    //DEBUG_SERIAL.print("POWER SET TO");
-    //DEBUG_SERIAL.println(control_item_power);
   }
   else if(item_addr >= ADDR_CONTROL_ITEM_LED0_R && item_addr <= ADDR_CONTROL_ITEM_LED2_B)
   {
