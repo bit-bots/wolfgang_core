@@ -174,6 +174,14 @@ void loop() {
   // read power switch state
   control_item_poweron = digitalRead(SWITCH_POWER_SENSE);
 
+  // check if manual power switch has been turned off and on again
+  // if this is the case we want to turn on the whole power
+  if(control_item_poweron && manual_power_was_off)
+  {
+    control_item_power = true;
+    digitalWrite(SWITCH_POWER, HIGH);
+  }
+  manual_power_was_off = !control_item_poweron;
 
   // read voltages and current sensor
   control_item_vcc = analogRead(VCC_SENSE);
