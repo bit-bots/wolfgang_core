@@ -154,7 +154,7 @@ void setup() {
   pinMode(LED_DATA, OUTPUT);
 
   // set motor power off
-  digitalWrite(SWITCH_POWER, LOW);
+  digitalWrite(SWITCH_POWER, HIGH);
   
   pinMode(SWITCH_POWER_SENSE, INPUT);
   pinMode(VCC_SENSE, INPUT);
