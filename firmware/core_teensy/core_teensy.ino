@@ -71,6 +71,7 @@ uint32_t control_item_led_rgb1, control_item_led_rgb2, control_item_led_rgb3;
 
 uint16_t control_item_vbat[6], control_item_vext, control_item_vcc, control_item_vdxl, control_item_current, control_item_poweron;
 
+bool manual_power_was_off = false;
 uint8_t baud, id;
 int sample = 0;
 uint32_t dxl_to_real_baud(uint8_t baud)
@@ -152,6 +153,7 @@ void setup() {
   pinMode(SWITCH_POWER, OUTPUT);
   pinMode(LED_DATA, OUTPUT);
 
+  // set motor power off
   digitalWrite(SWITCH_POWER, LOW);
   
   pinMode(SWITCH_POWER_SENSE, INPUT);
@@ -168,9 +170,12 @@ void setup() {
 }
 
 void loop() {
+  
+  // read power switch state
   control_item_poweron = digitalRead(SWITCH_POWER_SENSE);
-  
-  
+
+
+  // read voltages and current sensor
   control_item_vcc = analogRead(VCC_SENSE);
   control_item_vbat[0] = analogRead(VBAT_SENSE_0);
   control_item_vbat[1] = analogRead(VBAT_SENSE_1);
@@ -181,24 +186,8 @@ void loop() {
   control_item_vext = analogRead(VEXT_SENSE);
   control_item_vdxl = analogRead(VDXL_SENSE);
   control_item_current = analogRead(CURRENT_SENSE);
-  /*if(sample == 0)
-  {
-    DEBUG_SERIAL.print(control_item_poweron);
-    DEBUG_SERIAL.print("\t");
-    DEBUG_SERIAL.print(control_item_vcc);
-    DEBUG_SERIAL.print("\t");
-    DEBUG_SERIAL.print(control_item_vbat);
-    DEBUG_SERIAL.print("\t");
-    DEBUG_SERIAL.print(control_item_vext);
-    DEBUG_SERIAL.print("\t");
-    DEBUG_SERIAL.print(control_item_vdxl);
-    DEBUG_SERIAL.print("\t");
-    DEBUG_SERIAL.print(control_item_current);
-    DEBUG_SERIAL.print("\n");
-  }
-  sample = (sample + 1)%100;
-  */
-  
+
+  // package processing
   dxl.processPacket();
   if(dxl.getID() != id) // since we cant add the id as a control item, we need to check if it has been updated manually
   {
