@@ -182,15 +182,17 @@ void loop() {
     digitalWrite(SWITCH_POWER, HIGH);
   }
   manual_power_was_off = !control_item_poweron;
-
+  
+  dxl.processPacket();
   // read voltages and current sensor
-  control_item_vcc = analogRead(VCC_SENSE);
   control_item_vbat[0] = analogRead(VBAT_SENSE_0);
   control_item_vbat[1] = analogRead(VBAT_SENSE_1);
   control_item_vbat[2] = analogRead(VBAT_SENSE_2);
   control_item_vbat[3] = analogRead(VBAT_SENSE_3);
   control_item_vbat[4] = analogRead(VBAT_SENSE_4);
   control_item_vbat[5] = analogRead(VBAT_SENSE_5);
+  dxl.processPacket();
+  control_item_vcc = analogRead(VCC_SENSE);
   control_item_vext = analogRead(VEXT_SENSE);
   control_item_vdxl = analogRead(VDXL_SENSE);
   control_item_current = analogRead(CURRENT_SENSE);
