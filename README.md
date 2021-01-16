@@ -1,11 +1,15 @@
 # Wolfgang CORE
 COntrolling and REgulating electronics for the Wolfgang robot platform
 
-## Issues in Version 0.1
- - D2 reversed footprint
- - Holes for F2 are too small 
+Documentation can be found [here](http://doku.bit-bots.de/meta/manual/hardware/wolfgang_core.html).
 
-## Jumper
-P1: Enables switiching of motor power from teensy when connected
+## Features
+* Power over Ethernet (PoE) power source (for ethernet camera)
+* Power regulation 5V ~5A (odroid/raspberry pi), 9V 1A (network switch)
+* Power source selection (Battery or power supply)
+* Switching of power to Motors (Manual and through software)
+* RS485/TTL on 4 Buses with theoretically up to 12 MBaud (4MBaud tested since thats what our Dynamixel motors support)
+* Voltage (including Cell voltage for LiPos) and Current monitoring
+* 3 RGB LEDS!!!
 
-P2: Generally enables power when connected
+![Image of CORE](/core.png)
