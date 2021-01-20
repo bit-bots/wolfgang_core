@@ -1,7 +1,7 @@
 # Wolfgang CORE
 COntrolling and REgulating electronics for the Wolfgang robot platform
 
-Documentation can be found [here](http://doku.bit-bots.de/meta/manual/hardware/wolfgang_core.html).
+Documentation can be found [here](http://doku.bit-bots.de/meta/manual/hardware/electronics/wolfgang_core.html).
 
 ## Features
 * Power over Ethernet (PoE) power source (for ethernet camera)
