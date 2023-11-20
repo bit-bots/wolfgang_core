@@ -1,0 +1,75 @@
+(kicad_sch (version 20211123) (generator eeschema)
+
+  (uuid 9538e4ed-27e6-4c37-b989-9859dc0d49e8)
+
+  (paper "A4")
+
+  (lib_symbols
+  )
+
+
+  (text "TODOs:\nRS485 Stuff:\n	FT4232H Module -> Chip only\n	Check Bus numbering with FTDI chip\nPower:\n	Softstart Mosfet\n	delete 9V\n	appropriately sized 5V converter\n	Check capacity requirements\n	priotitzied power path\n	fix sensing switch bodge"
+    (at 229.87 59.69 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid a7e4ce5c-98fb-48d0-9ff3-cdec8a457bcf)
+  )
+
+  (sheet (at 57.15 40.64) (size 27.94 24.13) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid) (color 0 0 0 0))
+    (fill (color 0 0 0 0.0000))
+    (uuid e79c8e11-ed47-4701-ae80-a54cdb6682a5)
+    (property "Sheet name" "USB to RS485" (id 0) (at 57.15 39.9284 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheet file" "usb_to_rs485.kicad_sch" (id 1) (at 57.15 65.3546 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+  )
+
+  (sheet_instances
+    (path "/" (page "1"))
+    (path "/e79c8e11-ed47-4701-ae80-a54cdb6682a5" (page "2"))
+  )
+
+  (symbol_instances
+    (path "/e79c8e11-ed47-4701-ae80-a54cdb6682a5/4fe60c97-cec9-4f03-ab68-167e75f325df"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/e79c8e11-ed47-4701-ae80-a54cdb6682a5/7500a369-c227-4fff-a7df-814253c07d86"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/e79c8e11-ed47-4701-ae80-a54cdb6682a5/ebc1216d-effe-4360-9e4b-17ef16121043"
+      (reference "#PWR?") (unit 1) (value "+5V") (footprint "")
+    )
+    (path "/e79c8e11-ed47-4701-ae80-a54cdb6682a5/14bf0b6b-dd4b-4c5f-bd2d-56881754b845"
+      (reference "C?") (unit 1) (value "0.1uF") (footprint "")
+    )
+    (path "/e79c8e11-ed47-4701-ae80-a54cdb6682a5/263a7eac-f1ba-4c92-849c-0efacd7a27ec"
+      (reference "C?") (unit 1) (value "0.1uF") (footprint "")
+    )
+    (path "/e79c8e11-ed47-4701-ae80-a54cdb6682a5/7dba6c2d-ae60-4529-9ae7-5aae597ce815"
+      (reference "C?") (unit 1) (value "0.1uF") (footprint "")
+    )
+    (path "/e79c8e11-ed47-4701-ae80-a54cdb6682a5/da356a1a-2b58-428d-a1a5-51a21e7d87a3"
+      (reference "C?") (unit 1) (value "0.1uF") (footprint "")
+    )
+    (path "/e79c8e11-ed47-4701-ae80-a54cdb6682a5/386d13b5-3a15-48e0-abd4-a201beb5cd69"
+      (reference "U?") (unit 1) (value "SP485ECN-L") (footprint "")
+    )
+    (path "/e79c8e11-ed47-4701-ae80-a54cdb6682a5/460d4342-da1e-4fd0-a971-759c60211659"
+      (reference "U?") (unit 1) (value "SP485ECN-L") (footprint "")
+    )
+    (path "/e79c8e11-ed47-4701-ae80-a54cdb6682a5/8a01f664-a9db-40d1-8745-89f74b069e18"
+      (reference "U?") (unit 1) (value "SP485ECN-L") (footprint "")
+    )
+    (path "/e79c8e11-ed47-4701-ae80-a54cdb6682a5/93c3af21-b55d-48d7-8765-064dd08a2bab"
+      (reference "U?") (unit 1) (value "FT4232H") (footprint "")
+    )
+    (path "/e79c8e11-ed47-4701-ae80-a54cdb6682a5/cdd9ecd7-ced4-4db8-87f6-e4d2a850d141"
+      (reference "U?") (unit 1) (value "SP485ECN-L") (footprint "")
+    )
+    (path "/e79c8e11-ed47-4701-ae80-a54cdb6682a5/470b3415-5ab9-4ca6-ad80-b7184fa90738"
+      (reference "Y?") (unit 1) (value "12MHz") (footprint "")
+    )
+  )
+)
