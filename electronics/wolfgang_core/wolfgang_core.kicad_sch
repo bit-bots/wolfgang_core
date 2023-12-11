@@ -14,6 +14,40 @@
     (uuid a7e4ce5c-98fb-48d0-9ff3-cdec8a457bcf)
   )
 
+  (sheet (at 58.42 91.44) (size 39.37 29.21) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 03085433-09a6-46e6-a151-340cb0e29306)
+    (property "Sheetname" "power" (at 58.42 90.7284 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "power.kicad_sch" (at 58.42 121.2346 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "wolfgang_core"
+        (path "/9538e4ed-27e6-4c37-b989-9859dc0d49e8" (page "4"))
+      )
+    )
+  )
+
+  (sheet (at 104.14 87.63) (size 53.34 38.1) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 3d827942-3ef6-4515-bd08-bedcdbccf816)
+    (property "Sheetname" "PoE Power Sourcing Equipment (PSE)" (at 104.14 86.9184 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "poe.kicad_sch" (at 104.14 126.3146 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "wolfgang_core"
+        (path "/9538e4ed-27e6-4c37-b989-9859dc0d49e8" (page "5"))
+      )
+    )
+  )
+
   (sheet (at 104.14 48.26) (size 39.37 29.21) (fields_autoplaced)
     (stroke (width 0.1524) (type solid))
     (fill (color 0 0 0 0.0000))

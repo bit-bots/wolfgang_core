@@ -344,6 +344,14 @@
     [
       "ded4cb81-a8d4-43bd-a5d0-1be100709afa",
       "connectors"
+    ],
+    [
+      "03085433-09a6-46e6-a151-340cb0e29306",
+      "power"
+    ],
+    [
+      "3d827942-3ef6-4515-bd08-bedcdbccf816",
+      "PoE Power Sourcing Equipment (PSE)"
     ]
   ],
   "text_variables": {}
