@@ -352,6 +352,10 @@
     [
       "3d827942-3ef6-4515-bd08-bedcdbccf816",
       "PoE Power Sourcing Equipment (PSE)"
+    ],
+    [
+      "603e09f3-4614-4ae6-8ac0-848bf6b26647",
+      "io"
     ]
   ],
   "text_variables": {}

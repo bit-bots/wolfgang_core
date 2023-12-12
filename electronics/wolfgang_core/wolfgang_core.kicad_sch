@@ -48,6 +48,23 @@
     )
   )
 
+  (sheet (at 157.48 46.99) (size 27.94 17.78) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 603e09f3-4614-4ae6-8ac0-848bf6b26647)
+    (property "Sheetname" "io" (at 157.48 46.2784 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "io.kicad_sch" (at 157.48 65.3546 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "wolfgang_core"
+        (path "/9538e4ed-27e6-4c37-b989-9859dc0d49e8" (page "6"))
+      )
+    )
+  )
+
   (sheet (at 104.14 48.26) (size 39.37 29.21) (fields_autoplaced)
     (stroke (width 0.1524) (type solid))
     (fill (color 0 0 0 0.0000))
