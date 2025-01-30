@@ -4,4 +4,6 @@
   (lib (name "SMBJ15CA")(type "KiCad")(uri "${KIPRJMOD}/lib/SMBJ15CA.kicad_sym")(options "")(descr ""))
   (lib (name "VXO7803-500-M-TR")(type "KiCad")(uri "${KIPRJMOD}/lib/VXO7803-500-M-TR.kicad_sym")(options "")(descr ""))
   (lib (name "LM5157RTER")(type "KiCad")(uri "${KIPRJMOD}/lib/LM5157RTER.kicad_sym")(options "")(descr ""))
+  (lib (name "ltc4263")(type "KiCad")(uri "${KIPRJMOD}/lib/ltc4263.kicad_sym")(options "")(descr ""))
+  (lib (name "ETH1-230LD-POE")(type "KiCad")(uri "${KIPRJMOD}/lib/ETH1-230LD-POE.kicad_sym")(options "")(descr ""))
 )
