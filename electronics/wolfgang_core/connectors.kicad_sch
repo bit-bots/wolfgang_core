@@ -1625,7 +1625,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6be1b3d1-9779-422b-bc35-5fab59b45c42")
-		(property "Reference" "#PWR010"
+		(property "Reference" "#PWR029"
 			(at 128.27 149.86 0)
 			(effects
 				(font
@@ -1675,7 +1675,7 @@
 		(instances
 			(project "wolfgang_core"
 				(path "/9538e4ed-27e6-4c37-b989-9859dc0d49e8/ded4cb81-a8d4-43bd-a5d0-1be100709afa"
-					(reference "#PWR010")
+					(reference "#PWR029")
 					(unit 1)
 				)
 			)
@@ -1691,7 +1691,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6c32fd85-7120-4753-bafa-32cb124ca226")
-		(property "Reference" "#PWR09"
+		(property "Reference" "#PWR035"
 			(at 189.23 91.44 0)
 			(effects
 				(font
@@ -1741,7 +1741,7 @@
 		(instances
 			(project "wolfgang_core"
 				(path "/9538e4ed-27e6-4c37-b989-9859dc0d49e8/ded4cb81-a8d4-43bd-a5d0-1be100709afa"
-					(reference "#PWR09")
+					(reference "#PWR035")
 					(unit 1)
 				)
 			)
@@ -1757,7 +1757,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "73c8a765-0408-4715-b955-a4ea38e1762e")
-		(property "Reference" "#PWR014"
+		(property "Reference" "#PWR033"
 			(at 181.61 125.73 0)
 			(effects
 				(font
@@ -1807,7 +1807,7 @@
 		(instances
 			(project "wolfgang_core"
 				(path "/9538e4ed-27e6-4c37-b989-9859dc0d49e8/ded4cb81-a8d4-43bd-a5d0-1be100709afa"
-					(reference "#PWR014")
+					(reference "#PWR033")
 					(unit 1)
 				)
 			)
@@ -1823,7 +1823,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7e0fd4f6-a251-4efa-a572-6885e03e1851")
-		(property "Reference" "#PWR07"
+		(property "Reference" "#PWR027"
 			(at 128.27 91.44 0)
 			(effects
 				(font
@@ -1873,7 +1873,7 @@
 		(instances
 			(project "wolfgang_core"
 				(path "/9538e4ed-27e6-4c37-b989-9859dc0d49e8/ded4cb81-a8d4-43bd-a5d0-1be100709afa"
-					(reference "#PWR07")
+					(reference "#PWR027")
 					(unit 1)
 				)
 			)
@@ -2037,7 +2037,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a71d17b1-fa5e-4524-afaa-fc9230507a1f")
-		(property "Reference" "#PWR08"
+		(property "Reference" "#PWR030"
 			(at 158.75 91.44 0)
 			(effects
 				(font
@@ -2087,7 +2087,7 @@
 		(instances
 			(project "wolfgang_core"
 				(path "/9538e4ed-27e6-4c37-b989-9859dc0d49e8/ded4cb81-a8d4-43bd-a5d0-1be100709afa"
-					(reference "#PWR08")
+					(reference "#PWR030")
 					(unit 1)
 				)
 			)
@@ -2103,7 +2103,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d2560e75-bfc4-42e9-867b-b4b6f216e5bd")
-		(property "Reference" "#PWR012"
+		(property "Reference" "#PWR032"
 			(at 166.37 130.81 0)
 			(effects
 				(font
@@ -2153,7 +2153,7 @@
 		(instances
 			(project "wolfgang_core"
 				(path "/9538e4ed-27e6-4c37-b989-9859dc0d49e8/ded4cb81-a8d4-43bd-a5d0-1be100709afa"
-					(reference "#PWR012")
+					(reference "#PWR032")
 					(unit 1)
 				)
 			)
@@ -2169,7 +2169,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d755672a-48ff-4ad9-ba86-5147cc0306c1")
-		(property "Reference" "#PWR013"
+		(property "Reference" "#PWR031"
 			(at 166.37 125.73 0)
 			(effects
 				(font
@@ -2219,7 +2219,7 @@
 		(instances
 			(project "wolfgang_core"
 				(path "/9538e4ed-27e6-4c37-b989-9859dc0d49e8/ded4cb81-a8d4-43bd-a5d0-1be100709afa"
-					(reference "#PWR013")
+					(reference "#PWR031")
 					(unit 1)
 				)
 			)
@@ -2235,7 +2235,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "eaae4a8e-f053-4270-b24e-6cbaa1c0bcdc")
-		(property "Reference" "#PWR011"
+		(property "Reference" "#PWR028"
 			(at 128.27 124.46 0)
 			(effects
 				(font
@@ -2285,7 +2285,7 @@
 		(instances
 			(project "wolfgang_core"
 				(path "/9538e4ed-27e6-4c37-b989-9859dc0d49e8/ded4cb81-a8d4-43bd-a5d0-1be100709afa"
-					(reference "#PWR011")
+					(reference "#PWR028")
 					(unit 1)
 				)
 			)
@@ -2301,7 +2301,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ed3097ca-44cf-4d91-a5db-d43583e0f5fe")
-		(property "Reference" "#PWR015"
+		(property "Reference" "#PWR034"
 			(at 181.61 130.81 0)
 			(effects
 				(font
@@ -2351,7 +2351,7 @@
 		(instances
 			(project "wolfgang_core"
 				(path "/9538e4ed-27e6-4c37-b989-9859dc0d49e8/ded4cb81-a8d4-43bd-a5d0-1be100709afa"
-					(reference "#PWR015")
+					(reference "#PWR034")
 					(unit 1)
 				)
 			)
