@@ -1,4 +1,4 @@
-24619800244899395
+24671015504633271
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -99141,9 +99141,23 @@ TVS Diode (Bi-directional)
 2
 2
 bitbots
+ETH1230LD
+ETH1-230LD-1
+Transformer
+0
+16
+16
+bitbots
 RJE7318800110
 RJE7318800110-3
 Connector
+0
+14
+14
+bitbots
+SOIC127P599X175-14N
+S Package 14-Lead Plastic Small Outline (Narrow .150 Inch)
+Integrated Circuit
 0
 14
 14
@@ -99182,6 +99196,13 @@ LTC4418IUF-PBF
 0
 21
 21
+bitbots
+esp32_prgm_debug
+
+
+0
+10
+10
 footprints
 DIONM5436X244N
 DO-214AA (SMBJ)
